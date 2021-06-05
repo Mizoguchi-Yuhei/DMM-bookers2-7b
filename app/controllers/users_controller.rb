@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = Book.all
+    @user_today_books = Book.where(user_id: current_user.id).where(created_at: Time.zone.now.all_day)
+    @user_yesterday_books = Book.where(user_id: current_user.id).where(created_at: 1.day.ago.all_day)
     @new_book = Book.new
   end
 

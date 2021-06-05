@@ -8,9 +8,9 @@ class BooksController < ApplicationController
 
   def index
     @user = current_user
-    # @books = Book.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
+    @books = Book.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
     # 全期間でのいいね数順(いいね0を含む)
-    @books = Book.all
+    # @books = Book.all
     @new_book = Book.new
   end
 
