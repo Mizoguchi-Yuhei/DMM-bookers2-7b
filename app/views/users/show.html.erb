@@ -26,7 +26,11 @@
               <%= @user_yesterday_books.count %>
             </td>
             <td>
-              <%= "#{((@user_today_books.count.to_f / @user_yesterday_books.count.to_f) * 100).to_i}" + "%" %>
+              <% begin %>
+                <%= "#{((@user_today_books.count.to_f / @user_yesterday_books.count.to_f) * 100).to_i}" + "%" %>
+              <% rescue %>
+                <%= "0%" %>
+              <% end %>
             </td>
           </tr>
         </tbody>
@@ -40,9 +44,19 @@
         </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+              <%=  @user_thisweek_books.count %>
+            </td>
+            <td>
+              <%= @user_lastweek_books.count %>
+            </td>
+            <td>
+              <% begin %>
+                <%= "#{((@user_thisweek_books.count.to_f / @user_lastweek_books.count.to_f) * 100).to_i}" + "%" %>
+              <% rescue %>
+                <%= "0%" %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
